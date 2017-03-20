@@ -29,5 +29,3 @@ public class City extends CityComparator{
         this.name = name;
     }
     }
-
-}
