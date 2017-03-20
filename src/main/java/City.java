@@ -1,4 +1,8 @@
-public class City extends CityComparator{
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class City extends CityComparator {
 
     private String name;
     private City dependency;
@@ -28,4 +32,14 @@ public class City extends CityComparator{
     public void setName(String name) {
         this.name = name;
     }
+
+
+    public static List<String> travel(List<City> cities) {
+        Collections.sort(cities, new CityComparator());
+        List<String> sortedCities = new ArrayList<>();
+        for (City city: cities) {
+            sortedCities.add(city.getName());
+        }
+        return sortedCities;
     }
+}
