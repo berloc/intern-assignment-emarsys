@@ -1,6 +1,6 @@
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class Planner {
 
@@ -9,10 +9,6 @@ class Planner {
 
     List<String> plan(List<City> cities) {
         Collections.sort(cities, new CityComparator());
-        List<String> sortedCities = new ArrayList<>();
-        for (City city: cities) {
-            sortedCities.add(city.getName());
-        }
-        return sortedCities;
+        return cities.stream().map(City::getName).collect(Collectors.toList());
     }
 }
