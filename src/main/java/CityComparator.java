@@ -6,7 +6,6 @@ class CityComparator implements Comparator<City> {
 
     @Override
     public int compare(City city1, City city2) {
-//        System.out.println(city1.getName() + city2.getName());
         if (city1.getRelation() != null || city2.getRelation() != null) {
             if (city1.getRelation() != null && city1.getRelation().getName().equals(city2.getName())) {
                 return -1;
