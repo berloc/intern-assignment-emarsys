@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class PlannerTest {
 
@@ -56,6 +57,75 @@ public class PlannerTest {
         cities.add(z);
         z.setRelation(y);
         testList = Arrays.asList(x.getName(), z.getName(), y.getName());
+        assertEquals(testList, planner.plan(cities));
+    }
+    @Test
+    public void threeCitiesWithRelationsIndexTest() {
+        cities.add(x);
+        cities.add(y);
+        cities.add(z);
+        z.setRelation(y);
+        planner.plan(cities);
+        assertTrue(cities.indexOf(y) > cities.indexOf(z));
+    }
+
+    @Test
+    public void sixCitiesWithRelationsIndexTest() {
+        cities.add(y);
+        cities.add(v);
+        cities.add(u);
+        cities.add(z);
+        cities.add(w);
+        cities.add(x);
+        u.setRelation(x);
+        v.setRelation(y);
+        w.setRelation(v);
+        z.setRelation(w);
+        planner.plan(cities);
+        assertTrue(cities.indexOf(w) > cities.indexOf(z));
+        assertTrue(cities.indexOf(y) > cities.indexOf(v));
+        assertTrue(cities.indexOf(x) > cities.indexOf(u));
+
+    }
+
+    @Test
+    public void sixCitiesWithRelationsIndexAnotherTest() {
+        cities.add(u);
+        cities.add(v);
+        cities.add(w);
+        cities.add(z);
+        cities.add(x);
+        cities.add(y);
+        u.setRelation(x);
+        v.setRelation(y);
+        w.setRelation(v);
+        z.setRelation(w);
+        planner.plan(cities);
+        assertTrue(cities.indexOf(w) > cities.indexOf(z));
+        assertTrue(cities.indexOf(y) > cities.indexOf(v));
+        assertTrue(cities.indexOf(x) > cities.indexOf(u));
+        assertTrue(cities.indexOf(v) > cities.indexOf(w));
+    }
+
+
+
+    @Test
+    public void twoCitiesWithRelationIndexTest() {
+        cities.add(y);
+        cities.add(x);
+        x.setRelation(y);
+        planner.plan(cities);
+        testList = Arrays.asList(x.getName(), y.getName());
+        assertEquals(testList, planner.plan(cities));
+        assertTrue(cities.indexOf(y) > cities.indexOf(x));
+    }
+
+    @Test
+    public void twoCitiesWithRelationTest() {
+        cities.add(y);
+        cities.add(x);
+        x.setRelation(y);
+        testList = Arrays.asList(x.getName(), y.getName());
         assertEquals(testList, planner.plan(cities));
     }
 }
