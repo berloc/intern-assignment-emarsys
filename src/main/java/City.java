@@ -13,11 +13,11 @@ public class City extends CityComparator {
         this.relation = relation;
     }
 
-    public City getrelation() {
+    public City getRelation() {
         return relation;
     }
 
-    public void setrelation(City relation) {
+    public void setRelation(City relation) {
         this.relation = relation;
     }
 
