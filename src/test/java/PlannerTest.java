@@ -31,16 +31,17 @@ public class PlannerTest {
     public void tearDown() throws Exception {
         planner = null;
         cities = null;
+        testList = null;
     }
 
     @Test
-    public void oneCity() {
+    public void oneCityTest() {
         cities.add(x);
         assertEquals("x", planner.plan(cities).get(0));
     }
 
     @Test
-    public void threeCitiesWithoutDependency() {
+    public void threeCitiesWithoutRelationsTest() {
         cities.add(x);
         cities.add(y);
         cities.add(z);
@@ -49,7 +50,7 @@ public class PlannerTest {
     }
 
     @Test
-    public void threeCitiesWithDependency() {
+    public void threeCitiesWithRelationsTest() {
         cities.add(x);
         cities.add(y);
         cities.add(z);
