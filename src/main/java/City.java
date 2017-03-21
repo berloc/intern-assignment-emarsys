@@ -1,28 +1,24 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class City extends CityComparator {
 
     private String name;
-    private City dependency;
+    private City relation;
 
 
     public City(String name) {
         this.name = name;
     }
 
-    public City(String name, City dependency) {
+    public City(String name, City relation) {
         this.name = name;
-        this.dependency = dependency;
+        this.relation = relation;
     }
 
-    public City getDependency() {
-        return dependency;
+    public City getrelation() {
+        return relation;
     }
 
-    public void setDependency(City dependency) {
-        this.dependency = dependency;
+    public void setrelation(City relation) {
+        this.relation = relation;
     }
 
     public String getName() {
@@ -31,15 +27,5 @@ public class City extends CityComparator {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-
-    public static List<String> travel(List<City> cities) {
-        Collections.sort(cities, new CityComparator());
-        List<String> sortedCities = new ArrayList<>();
-        for (City city: cities) {
-            sortedCities.add(city.getName());
-        }
-        return sortedCities;
     }
 }
