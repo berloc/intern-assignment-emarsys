@@ -12,19 +12,20 @@ public class Main {
         City x = new City("x");
         City y = new City("y");
         City z = new City("z");
-        y.setDependency(z);
-        z.setDependency(x);
-
-
+        u.setRelation(x);
+        v.setRelation(y);
+        w.setRelation(v);
+        z.setRelation(w);
 
         List<City> cities = new ArrayList<>();
+        cities.add(w);
         cities.add(z);
         cities.add(y);
+        cities.add(u);
         cities.add(x);
+        cities.add(v);
 
-        City.travel(cities);
-        System.out.println(City.travel(cities));
-
+        Planner planner = new Planner();
+        System.out.println(planner.plan(cities));
     }
-
 }
